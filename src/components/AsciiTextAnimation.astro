@@ -1,0 +1,82 @@
+---
+// Scramble/decode text animation
+---
+
+<style>
+	.scramble-text {
+		display: inline;
+	}
+</style>
+
+<script>
+	class ScrambleText {
+	private element: HTMLElement;
+	private text: string;
+	private chars: string;
+	private queue: Array<() => void> = [];
+	private frame = 0;
+	private resolve!: () => void;
+
+	constructor(element: HTMLElement) {
+		this.element = element;
+		this.text = element.innerText;
+		this.chars = '!<>-_\\/[]{}—=+*^?#________';
+		element.innerText = '';
+	}
+
+	private randomChar(): string {
+		return this.chars[Math.floor(Math.random() * this.chars.length)];
+	}
+
+	update(): void {
+		let output = '';
+		let complete = 0;
+		let revealed = 0;
+
+		for (let i = 0; i < this.text.length; i++) {
+			if (i <= this.frame) {
+				output += this.text[i];
+				revealed++;
+			} else {
+				output += this.randomChar();
+			}
+
+			if (revealed === this.text.length) {
+				complete++;
+			}
+		}
+
+		this.element.innerText = output;
+
+		if (complete === this.text.length) {
+			this.resolve();
+		} else {
+			this.frame = Math.min(this.frame + 1, this.text.length);
+			requestAnimationFrame(() => this.update());
+		}
+	}
+
+	animate(): Promise<void> {
+		return new Promise(resolve => {
+			this.resolve = resolve;
+			this.frame = 0;
+			this.update();
+		});
+	}
+}
+
+// Start animation when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+	const scrambleElements = document.querySelectorAll('.scramble-text');
+
+	scrambleElements.forEach((element) => {
+		if (element instanceof HTMLElement) {
+			const scrambler = new ScrambleText(element);
+			// Wait a bit before starting
+			setTimeout(() => {
+				scrambler.animate();
+			}, 300);
+		}
+	});
+});
+</script>

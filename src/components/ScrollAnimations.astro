@@ -1,0 +1,184 @@
+---
+// Scroll-triggered animations - clean, editorial, precise
+---
+
+<style>
+	/* Base animation state */
+	.animate-in {
+		opacity: 0;
+		transform: translateY(24px);
+		transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+	            transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+		will-change: opacity, transform;
+	}
+
+	.animate-in.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	/* Hero animations with specific delays */
+	.hero .overline.animate-in {
+		transform: translateY(10px);
+		transition-delay: 0s;
+	}
+
+	.hero h1.animate-in {
+		transform: translateY(20px);
+		transition-duration: 0.6s;
+		transition-delay: 0.1s;
+	}
+
+	.hero .description.animate-in {
+		transform: translateY(10px);
+		transition-delay: 0.25s;
+	}
+
+	.hero .actions.animate-in {
+		transform: translateY(8px);
+	}
+
+	.hero .actions .btn-primary.animate-in {
+		transition-delay: 0s;
+	}
+
+	.hero .actions .btn-secondary.animate-in {
+		transition-delay: 0.1s;
+	}
+
+	/* Projects - stagger cards */
+	.project.animate-in {
+		transform: translateY(24px);
+	}
+
+	.project:nth-child(1).animate-in {
+		transition-delay: 0s;
+	}
+
+	.project:nth-child(2).animate-in {
+		transition-delay: 0.12s;
+	}
+
+	.project:nth-child(3).animate-in {
+		transition-delay: 0.24s;
+	}
+
+	/* Tags animate after parent card */
+	.project-tags {
+		opacity: 0;
+		transition: opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+	}
+
+	.project.visible .project-tags {
+		opacity: 1;
+		transition-delay: 0.15s;
+	}
+
+	/* About - sequential paragraphs */
+	.about-content p.animate-in {
+		transform: translateY(16px);
+	}
+
+	.about-content p:nth-child(1).animate-in {
+		transition-delay: 0s;
+	}
+
+	.about-content p:nth-child(2).animate-in {
+		transition-delay: 0.1s;
+	}
+
+	.about-content p:nth-child(3).animate-in {
+		transition-delay: 0.2s;
+	}
+
+	/* Services - stagger left to right */
+	.service.animate-in {
+		transform: translateY(20px);
+	}
+
+	.service:nth-child(1).animate-in {
+		transition-delay: 0s;
+	}
+
+	.service:nth-child(2).animate-in {
+		transition-delay: 0.1s;
+	}
+
+	.service:nth-child(3).animate-in {
+		transition-delay: 0.2s;
+	}
+
+	/* Service number fades in before title */
+	.service-number {
+		opacity: 0;
+		transition: opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+		transition-delay: 0.05s;
+	}
+
+	.service.visible .service-number {
+		opacity: 1;
+	}
+
+	/* Contact section */
+	.contact h2.animate-in {
+		transform: translateY(16px);
+		transition-delay: 0s;
+	}
+
+	.contact .email-link.animate-in {
+		transition-delay: 0.15s;
+	}
+
+	/* Respect reduced motion */
+	@media (prefers-reduced-motion: reduce) {
+		* {
+			transition: none !important;
+			animation: none !important;
+		}
+
+		.animate-in {
+			opacity: 1;
+			transform: none !important;
+		}
+
+		.project-tags {
+			opacity: 1 !important;
+		}
+
+		.service-number {
+			opacity: 1 !important;
+		}
+	}
+</style>
+
+<script>
+	// Single Intersection Observer instance for all animations
+	const observerOptions = {
+		threshold: 0.1,
+		rootMargin: '0px 0px -50px 0px'
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
+				entry.target.classList.add('visible');
+				// Stop observing after first trigger (one-time animation)
+				observer.unobserve(entry.target);
+			}
+		});
+	}, observerOptions);
+
+	// Observe all elements with .animate-in class
+	function setupAnimations() {
+		document.querySelectorAll('.animate-in').forEach(el => {
+			observer.observe(el);
+		});
+	}
+
+	// Run on DOM ready
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', setupAnimations);
+	} else {
+		setupAnimations();
+	}
+</script>

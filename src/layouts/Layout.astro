@@ -1,0 +1,82 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Akira Uriel - UI/UX Designer" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} - Akira Uriel</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+		<style is:global>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+				background: #ffffff;
+				color: #09090b;
+				line-height: 1.6;
+				cursor: none !important;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+
+			a,
+			button,
+			.cursor-interact {
+				cursor: none !important;
+			}
+
+			/* Minimal scrollbar */
+			::-webkit-scrollbar {
+				width: 6px;
+			}
+
+			::-webkit-scrollbar-track {
+				background: transparent;
+			}
+
+			::-webkit-scrollbar-thumb {
+				background: #e4e4e7;
+				border-radius: 3px;
+			}
+
+			::selection {
+				background: #09090b;
+				color: #ffffff;
+			}
+
+			/* Smooth scroll wrapper */
+			#smooth-wrapper {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				will-change: transform;
+			}
+		</style>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

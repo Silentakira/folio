@@ -1,0 +1,210 @@
+---
+---
+
+<section class="hero" id="hero">
+	<div class="hero-content">
+		<p class="section-label animate-in">Portfolio / UI/UX / Branding</p>
+
+		<h1 class="hero-title">
+			<span class="word animate-in" style="--delay: 100ms">Design</span>
+			<span class="word animate-in" style="--delay: 200ms">that</span>
+			<span class="word animate-in" style="--delay: 300ms">feels</span>
+			<span class="word animate-in text-accent" style="--delay: 400ms">clean,</span>
+			<span class="word animate-in text-accent" style="--delay: 500ms">sharp,</span>
+			<span class="word animate-in" style="--delay: 600ms">and</span>
+			<span class="word animate-in text-accent" style="--delay: 700ms">human.</span>
+		</h1>
+
+		<p class="hero-description animate-in" style="--delay: 800ms">
+			I fix confusing interfaces and weak brand systems with psychology-driven design.
+			Clearer paths, stronger first impressions, and fewer customers getting lost.
+		</p>
+
+		<div class="hero-actions animate-in" style="--delay: 900ms">
+			<a href="mailto:arthurkayedesign@gmail.com" class="btn btn-primary interactive cursor-interact" data-cursor="EMAIL">
+				<span>Email me</span>
+			</a>
+			<a href="#work" class="btn btn-secondary interactive cursor-interact" data-cursor="VIEW">
+				<span>See work</span>
+			</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: clamp(80px, 15vw, 180px) clamp(20px, 6vw, 120px);
+		text-align: left;
+	}
+
+	.hero-content {
+		max-width: 900px;
+	}
+
+	.section-label {
+		margin-bottom: 24px;
+		color: var(--pink);
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		opacity: 0;
+		animation: fadeIn 0.6s ease forwards;
+	}
+
+	.hero-title {
+		font-size: clamp(3rem, 7vw, 6rem);
+		font-weight: 700;
+		line-height: 1.1;
+		letter-spacing: -0.03em;
+		margin-bottom: 32px;
+		text-align: left;
+	}
+
+	.word {
+		display: inline-block;
+		opacity: 0;
+		transform: translateY(40px);
+		animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+		animation-delay: var(--delay);
+	}
+
+	.word.text-accent {
+		color: var(--pink);
+	}
+
+	.dark .word.text-accent {
+		color: var(--accent);
+	}
+
+	.hero-description {
+		max-width: 580px;
+		margin-top: 32px;
+		color: var(--text-muted);
+		font-size: clamp(1rem, 1.4vw, 1.2rem);
+		font-weight: 400;
+		line-height: 1.7;
+		text-align: left;
+		opacity: 0;
+		animation: fadeUp 0.8s ease forwards;
+		animation-delay: 800ms;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 16px;
+		margin-top: 48px;
+		opacity: 0;
+		animation: fadeUp 0.8s ease forwards;
+		animation-delay: 900ms;
+	}
+
+	/* Clean, minimal iOS-style buttons */
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 48px;
+		padding: 0 24px;
+		border-radius: 24px;
+		font-weight: 600;
+		font-size: 0.95rem;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.btn::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: currentColor;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	.btn:hover::before {
+		opacity: 0.08;
+	}
+
+	.btn:active {
+		transform: scale(0.97);
+	}
+
+	.btn-primary {
+		background: var(--text-color);
+		color: var(--bg-color);
+		border: 1px solid var(--text-color);
+	}
+
+	.btn-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	}
+
+	.dark .btn-primary:hover {
+		box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+	}
+
+	.btn-secondary {
+		background: transparent;
+		color: var(--text-color);
+		border: 1px solid var(--border-strong);
+	}
+
+	.btn-secondary:hover {
+		border-color: var(--text-color);
+		transform: translateY(-2px);
+	}
+
+	@keyframes slideUp {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes fadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes fadeIn {
+		to {
+			opacity: 1;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.hero {
+			padding: clamp(60px, 12vw, 120px) clamp(16px, 5vw, 24px);
+		}
+
+		.hero-title {
+			font-size: clamp(2.5rem, 10vw, 4rem);
+		}
+
+		.hero-actions {
+			flex-direction: column;
+			width: 100%;
+		}
+
+		.btn {
+			width: 100%;
+		}
+	}
+</style>

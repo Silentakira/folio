@@ -1,0 +1,326 @@
+---
+---
+
+<section class="work-intro" id="work">
+	<p class="section-label scroll-animate">Selected Work</p>
+	<h2 class="scroll-animate">Three studies to preview the direction. Miau leads the tone.</h2>
+</section>
+
+<section class="project-list">
+	<article class="project scroll-animate">
+		<div class="project-visual">
+			<div class="project-icon">MIAU</div>
+			<span class="project-label">PAP / Skate Beats</span>
+		</div>
+		<div class="project-content">
+			<div class="project-meta">
+				<span>01</span>
+				<span>Main designer</span>
+			</div>
+			<h3>Miau Studios - Skate Beats brand and website</h3>
+			<p>
+				My proudest project so far: a clean but playful studio identity with bold rounded
+				typography, hard black linework, candy accents, and motion that gives the brand teeth.
+			</p>
+			<div class="project-tags">
+				<span>Brand System</span>
+				<span>Art Direction</span>
+				<span>Web Motion</span>
+			</div>
+		</div>
+	</article>
+
+	<article class="project scroll-animate">
+		<div class="project-visual project-visual-alt">
+			<span class="project-title">MH</span>
+			<span class="project-line"></span>
+			<span class="project-dot"></span>
+		</div>
+		<div class="project-content">
+			<div class="project-meta">
+				<span>02</span>
+				<span>Mock case study</span>
+			</div>
+			<h3>Meta Heart - wellness brand identity</h3>
+			<p>
+				A placeholder brand system for a wellness concept, built around trust, warmth, and
+				simple visual signals that make the business feel easier to understand.
+			</p>
+			<div class="project-tags">
+				<span>Branding</span>
+				<span>Color Psychology</span>
+				<span>Identity</span>
+			</div>
+		</div>
+	</article>
+
+	<article class="project scroll-animate">
+		<div class="project-visual project-visual-ux">
+			<span class="flow-step">Menu</span>
+			<span class="flow-step">Choice</span>
+			<span class="flow-step">Book</span>
+			<span class="project-title">UX</span>
+		</div>
+		<div class="project-content">
+			<div class="project-meta">
+				<span>03</span>
+				<span>Mock case study</span>
+			</div>
+			<h3>Restaurant booking - UX teardown concept</h3>
+			<p>
+				A conversion-focused concept that reduces choice overload, clarifies the action, and
+				makes the next step feel obvious instead of buried.
+			</p>
+			<div class="project-tags">
+				<span>UX Design</span>
+				<span>Conversion</span>
+				<span>Audit</span>
+			</div>
+		</div>
+	</article>
+</section>
+
+<style>
+	.work-intro {
+		padding: clamp(60px, 12vw, 120px) clamp(20px, 6vw, 120px) 0;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.section-label {
+		margin-bottom: 20px;
+		color: var(--pink);
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+	}
+
+	.dark .section-label {
+		color: var(--accent);
+	}
+
+	.work-intro h2 {
+		max-width: 800px;
+		font-size: clamp(2rem, 4vw, 3.5rem);
+		font-weight: 700;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+	}
+
+	.project-list {
+		padding: 0 clamp(20px, 6vw, 120px);
+	}
+
+	.project {
+		display: grid;
+		grid-template-columns: 240px 1fr;
+		gap: clamp(24px, 4vw, 48px);
+		padding: clamp(32px, 6vw, 64px) 0;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.project:last-child {
+		border-bottom: none;
+	}
+
+	.project-visual {
+		position: relative;
+		display: grid;
+		place-items: center;
+		min-height: 200px;
+		background: var(--surface);
+		border-radius: 16px;
+	}
+
+	.dark .project-visual {
+		background: var(--surface);
+	}
+
+	.project-icon {
+		font-size: 2.5rem;
+		font-weight: 800;
+		color: var(--text-color);
+	}
+
+	.project-label {
+		position: absolute;
+		bottom: 16px;
+		left: 16px;
+		color: var(--pink);
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.dark .project-label {
+		color: var(--accent);
+	}
+
+	.project-visual-alt {
+		background: linear-gradient(135deg, #fff 0%, #fff 50%, #fff5f8 100%);
+	}
+
+	.dark .project-visual-alt {
+		background: linear-gradient(135deg, #141414 0%, #141414 50%, #1a1020 100%);
+	}
+
+	.project-title {
+		position: absolute;
+		bottom: 16px;
+		left: 20px;
+		font-size: 3rem;
+		font-weight: 800;
+		line-height: 1;
+	}
+
+	.project-line {
+		position: absolute;
+		top: 24px;
+		right: 20px;
+		width: 40%;
+		height: 3px;
+		background: var(--pink);
+	}
+
+	.dark .project-line {
+		background: var(--accent);
+	}
+
+	.project-dot {
+		position: absolute;
+		bottom: 20px;
+		right: 20px;
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		background: var(--yellow);
+	}
+
+	.dark .project-dot {
+		background: var(--accent);
+	}
+
+	.project-visual-ux {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		align-items: stretch;
+		padding: 24px;
+		background: linear-gradient(135deg, #fff 0%, #fff 50%, #f0f8ff 100%);
+	}
+
+	.dark .project-visual-ux {
+		background: linear-gradient(135deg, #141414 0%, #141414 50%, #0a1020 100%);
+	}
+
+	.flow-step {
+		padding: 10px 16px;
+		background: var(--blue);
+		color: #000;
+		border-radius: 100px;
+		font-size: 0.85rem;
+		font-weight: 700;
+		text-align: center;
+	}
+
+	.dark .flow-step {
+		background: var(--accent);
+		color: white;
+	}
+
+	.project-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.project-meta {
+		display: flex;
+		gap: 16px;
+		margin-bottom: 16px;
+		color: var(--pink);
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.dark .project-meta {
+		color: var(--accent);
+	}
+
+	.project-content h3 {
+		max-width: 600px;
+		font-size: clamp(1.5rem, 3vw, 2.5rem);
+		font-weight: 700;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+		margin-bottom: 16px;
+	}
+
+	.project-content p {
+		max-width: 540px;
+		color: var(--text-muted);
+		font-size: 1rem;
+		line-height: 1.7;
+	}
+
+	.project-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: 24px;
+	}
+
+	.project-tags span {
+		padding: 6px 14px;
+		background: var(--bg-color);
+		color: var(--text-color);
+		border: 1px solid var(--border);
+		border-radius: 100px;
+		font-size: 0.8rem;
+		font-weight: 600;
+	}
+
+	.scroll-animate {
+		opacity: 0;
+		transform: translateY(24px);
+		transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.scroll-animate.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	@media (max-width: 768px) {
+		.project {
+			grid-template-columns: 1fr;
+			gap: 24px;
+		}
+
+		.project-visual {
+			min-height: 160px;
+		}
+	}
+</style>
+
+<script>
+	const observerOptions = {
+		threshold: 0.1,
+		rootMargin: '0px 0px -50px 0px'
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+			}
+		});
+	}, observerOptions);
+
+	document.querySelectorAll('.scroll-animate').forEach(el => {
+		observer.observe(el);
+	});
+</script>

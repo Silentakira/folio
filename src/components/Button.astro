@@ -1,0 +1,140 @@
+---
+interface Props {
+	href?: string;
+	variant?: 'primary' | 'secondary' | 'ghost';
+	size?: 'sm' | 'md' | 'lg';
+	onClick?: string;
+}
+
+const {
+	href,
+	variant = 'primary',
+	size = 'md',
+	onClick
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+
+const classes = {
+	primary: 'btn-primary',
+	secondary: 'btn-secondary',
+	ghost: 'btn-ghost'
+};
+
+const sizes = {
+	sm: 'btn-sm',
+	md: 'btn-md',
+	lg: 'btn-lg'
+};
+---
+
+<Tag class={`btn ${classes[variant]} ${sizes[size]} interactive`} href={href} onClick={onClick}>
+	<slot />
+</Tag>
+
+<style>
+	.btn {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-weight: 600;
+		border: none;
+		outline: none;
+		overflow: hidden;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		cursor: none;
+	}
+
+	.btn::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: currentColor;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+		border-radius: inherit;
+	}
+
+	.btn:hover::before {
+		opacity: 0.1;
+	}
+
+	.btn:active {
+		transform: scale(0.96);
+	}
+
+	/* Sizes */
+	.btn-sm {
+		padding: 10px 20px;
+		font-size: 14px;
+		border-radius: 20px;
+	}
+
+	.btn-md {
+		padding: 14px 28px;
+		font-size: 16px;
+		border-radius: 24px;
+	}
+
+	.btn-lg {
+		padding: 18px 36px;
+		font-size: 18px;
+		border-radius: 28px;
+	}
+
+	/* Variants */
+	.btn-primary {
+		background: var(--accent);
+		color: white;
+		box-shadow: 0 2px 12px rgba(139, 92, 246, 0.3);
+	}
+
+	.btn-primary:hover {
+		background: var(--accent-light);
+		box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+		transform: translateY(-2px);
+	}
+
+	.btn-secondary {
+		background: transparent;
+		color: var(--text-color);
+		border: 2px solid var(--border);
+	}
+
+	.btn-secondary:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+		transform: translateY(-2px);
+	}
+
+	.btn-ghost {
+		background: transparent;
+		color: var(--text-color);
+	}
+
+	.btn-ghost:hover {
+		color: var(--accent);
+	}
+
+	.dark .btn-primary {
+		box-shadow: 0 2px 12px rgba(139, 92, 246, 0.4);
+	}
+
+	.dark .btn-primary:hover {
+		box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
+	}
+
+	.dark .btn-secondary {
+		border-color: var(--border);
+	}
+
+	.dark .btn-secondary:hover {
+		border-color: var(--accent);
+	}
+</style>

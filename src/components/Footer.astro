@@ -1,0 +1,30 @@
+---
+---
+
+<footer class="footer">
+	<p>2026 Akira Uriel</p>
+	<p>UI/UX & Branding / Braga, Portugal</p>
+</footer>
+
+<style>
+	.footer {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+		width: min(calc(100% - 36px), 1240px);
+		margin: 0 auto;
+		padding: 28px 0 110px;
+		border-top: 2px dashed var(--border);
+		color: var(--muted);
+		font-weight: 700;
+		position: relative;
+		z-index: 1;
+	}
+
+	@media (max-width: 640px) {
+		.footer {
+			flex-direction: column;
+			width: min(calc(100% - 24px), 1240px);
+		}
+	}
+</style>

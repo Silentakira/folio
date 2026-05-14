@@ -1,0 +1,639 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Cursor from '../components/Cursor.astro';
+import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
+---
+
+<Layout title="Home">
+	<Cursor />
+	<AsciiTextAnimation />
+
+	<div id="smooth-wrapper">
+		<main>
+		<section class="hero">
+			<div class="container">
+				<p class="overline animate-in">UI/UX & Brand Designer</p>
+
+				<h1 class="animate-in">
+					<span class="scramble-text">Design that looks clean. Works sharper.</span>
+				</h1>
+
+				<p class="description animate-in">
+					I help businesses fix confusing interfaces and weak brand systems — so more people understand what to do, and fewer leave before they do it.
+				</p>
+
+				<div class="actions animate-in">
+					<a href="#work" class="btn-primary cursor-interact">See the work</a>
+					<a href="mailto:arthurkayedesign@gmail.com" class="btn-secondary cursor-interact">Get in touch</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="work" id="work">
+			<div class="container">
+				<p class="section-label animate-in">Selected Work</p>
+				<div class="projects">
+					<article class="project animate-in">
+						<div class="project-header">
+							<span class="project-number">01</span>
+							<div class="project-meta">Miau Studios · Main Designer</div>
+						</div>
+						<h3>Miau Studios</h3>
+						<p>Full brand and web design for an indie game studio — bold rounded type, candy accents, and motion that actually fits the product.</p>
+						<div class="project-tags">
+							<span>Brand System</span>
+							<span>Art Direction</span>
+							<span>Web Motion</span>
+						</div>
+					</article>
+
+					<article class="project animate-in">
+						<div class="project-header">
+							<span class="project-number">02</span>
+							<div class="project-meta">Meta Heart · Brand Identity</div>
+						</div>
+						<h3>Meta Heart</h3>
+						<p>Wellness brand built around trust signals and calm visual hierarchy. Every color and shape earns its place.</p>
+						<div class="project-tags">
+							<span>Branding</span>
+							<span>Color Psychology</span>
+							<span>Identity</span>
+						</div>
+					</article>
+
+					<article class="project animate-in">
+						<div class="project-header">
+							<span class="project-number">03</span>
+							<div class="project-meta">Restaurant Booking · UX Concept</div>
+						</div>
+						<h3>Restaurant Booking</h3>
+						<p>Redesign focused on cutting choice overload and making the booking action obvious.</p>
+						<div class="project-tags">
+							<span>UX Design</span>
+							<span>Conversion</span>
+							<span>Audit</span>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="about">
+			<div class="container">
+				<p class="section-label animate-in">About</p>
+				<div class="about-content">
+					<p class="animate-in">
+						I'm Akira — UI/UX & brand designer and intern at Boutik Studio, based in Braga.
+					</p>
+					<p class="animate-in">
+						I design things that feel calm on the surface and intentional underneath. Simple systems, useful motion, interfaces and identities that help people decide without thinking too hard.
+					</p>
+					<p class="animate-in">
+						Miau Studios is the project that best shows how I work: minimal doesn't have to mean cold. It can be clean, sharp, and still very practical.
+					</p>
+					<p class="animate-in">
+						I take freelance projects for businesses that need clearer branding, better websites, or a design audit.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="services">
+			<div class="container">
+				<p class="section-label animate-in">Services</p>
+				<h2 class="animate-in">What I can help with.</h2>
+				<div class="services-grid">
+					<article class="service animate-in">
+						<span class="service-number">01</span>
+						<h3>UI/UX Design</h3>
+						<p>Web and mobile interfaces built around how people actually make decisions.</p>
+					</article>
+
+					<article class="service animate-in">
+						<span class="service-number">02</span>
+						<h3>Brand Design</h3>
+						<p>Logos, identity systems, and visual rules that make a business memorable and consistent.</p>
+					</article>
+
+					<article class="service animate-in">
+						<span class="service-number">03</span>
+						<h3>Design Audits</h3>
+						<p>A clear read on what's confusing your users, what's costing you conversions, and what to fix first.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="contact" id="contact">
+			<div class="container">
+				<p class="section-label animate-in">Contact</p>
+				<h2 class="animate-in">Your design should be easy to choose. Let's make sure it is.</h2>
+				<a href="mailto:arthurkayedesign@gmail.com" class="email-link cursor-interact animate-in">arthurkayedesign@gmail.com</a>
+			</div>
+		</section>
+
+		<footer class="footer">
+			<div class="container">
+				<p>© 2026 Akira Uriel · UI/UX & Branding · Braga, Portugal</p>
+			</div>
+		</footer>
+	</main>
+	</div>
+
+	<style>
+		.container {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 0 24px;
+		}
+
+		/* Base animation state */
+		.animate-in {
+			opacity: 0;
+			transform: translateY(24px);
+			transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+			            transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+			will-change: opacity, transform;
+		}
+
+		.animate-in.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		/* Hero section stagger */
+		.hero .overline.animate-in {
+			transform: translateY(10px);
+			transition-delay: 0ms;
+		}
+
+		.hero h1.animate-in {
+			transform: translateY(20px);
+			transition-duration: 0.6s;
+			transition-delay: 80ms;
+		}
+
+		.hero .description.animate-in {
+			transform: translateY(10px);
+			transition-delay: 80ms;
+		}
+
+		.hero .actions.animate-in {
+			transform: translateY(8px);
+			transition-delay: 160ms;
+		}
+
+		/* Projects - stagger cards */
+		.project.animate-in {
+			transform: translateY(24px);
+		}
+
+		.project:nth-child(1).animate-in {
+			transition-delay: 0s;
+		}
+
+		.project:nth-child(2).animate-in {
+			transition-delay: 0.12s;
+		}
+
+		.project:nth-child(3).animate-in {
+			transition-delay: 0.24s;
+		}
+
+		/* Tags animate after parent card */
+		.project-tags {
+			opacity: 0;
+			transition: opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+		}
+
+		.project.visible .project-tags {
+			opacity: 1;
+			transition-delay: 0.15s;
+		}
+
+		/* About - sequential paragraphs */
+		.about-content p.animate-in {
+			transform: translateY(16px);
+		}
+
+		.about-content p:nth-child(1).animate-in {
+			transition-delay: 0s;
+		}
+
+		.about-content p:nth-child(2).animate-in {
+			transition-delay: 0.1s;
+		}
+
+		.about-content p:nth-child(3).animate-in {
+			transition-delay: 0.2s;
+		}
+
+		/* Services - stagger left to right */
+		.service.animate-in {
+			transform: translateY(20px);
+		}
+
+		.service:nth-child(1).animate-in {
+			transition-delay: 0ms;
+		}
+
+		.service:nth-child(2).animate-in {
+			transition-delay: 110ms;
+		}
+
+		.service:nth-child(3).animate-in {
+			transition-delay: 220ms;
+		}
+
+		/* Service number fades in before title */
+		.service-number {
+			opacity: 0;
+			transition: opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+			transition-delay: 0.05s;
+		}
+
+		.service.visible .service-number {
+			opacity: 1;
+		}
+
+		/* Contact stagger */
+		.contact .section-label.animate-in {
+			transition-delay: 0ms;
+		}
+
+		.contact h2.animate-in {
+			transform: translateY(16px);
+			transition-delay: 80ms;
+		}
+
+		.contact .email-link.animate-in {
+			transition-delay: 160ms;
+		}
+
+		/* Respect reduced motion */
+		@media (prefers-reduced-motion: reduce) {
+			* {
+				transition: none !important;
+				animation: none !important;
+			}
+
+			.animate-in {
+				opacity: 1;
+				transform: none !important;
+			}
+
+			.project-tags {
+				opacity: 1 !important;
+			}
+
+			.service-number {
+				opacity: 1 !important;
+			}
+		}
+
+		/* Hero */
+		.hero {
+			min-height: 90vh;
+			display: flex;
+			align-items: center;
+			padding: 120px 0;
+		}
+
+		.overline {
+			color: #64748b;
+			font-size: 0.875rem;
+			font-weight: 600;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			margin-bottom: 24px;
+		}
+
+		.hero h1 {
+			font-size: clamp(2.5rem, 6vw, 4rem);
+			font-weight: 700;
+			line-height: 1.1;
+			letter-spacing: -0.03em;
+			margin-bottom: 24px;
+			color: #09090b;
+		}
+
+		.description {
+			font-size: 1.125rem;
+			color: #64748b;
+			max-width: 580px;
+			line-height: 1.7;
+			margin-bottom: 40px;
+		}
+
+		.actions {
+			display: flex;
+			gap: 16px;
+			flex-wrap: wrap;
+		}
+
+		/* Buttons */
+		.btn-primary,
+		.btn-secondary,
+		.email-link {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 14px 28px;
+			font-size: 0.95rem;
+			font-weight: 600;
+			border-radius: 8px;
+			transition: all 0.2s ease;
+		}
+
+		.btn-primary {
+			background: #09090b;
+			color: #ffffff;
+			border: none;
+		}
+
+		.btn-primary:hover {
+			background: #18181b;
+			transform: translateY(-1px);
+		}
+
+		.btn-secondary,
+		.email-link {
+			background: transparent;
+			color: #09090b;
+			border: 1px solid #e4e4e7;
+		}
+
+		.btn-secondary:hover,
+		.email-link:hover {
+			border-color: #09090b;
+			transform: translateY(-1px);
+		}
+
+		/* Sections */
+		.work,
+		.about,
+		.services,
+		.contact {
+			padding: 100px 0;
+			border-top: 1px solid #e4e4e7;
+		}
+
+		.section-label {
+			color: #64748b;
+			font-size: 0.875rem;
+			font-weight: 600;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			margin-bottom: 24px;
+		}
+
+		/* Projects */
+		.projects {
+			display: flex;
+			flex-direction: column;
+			gap: 60px;
+		}
+
+		.project {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		.project-header {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+		}
+
+		.project-number {
+			font-size: 0.875rem;
+			font-weight: 600;
+			color: #64748b;
+		}
+
+		.project-meta {
+			font-size: 0.875rem;
+			color: #64748b;
+		}
+
+		.project h3 {
+			font-size: 1.75rem;
+			font-weight: 600;
+			letter-spacing: -0.02em;
+		}
+
+		.project p {
+			color: #64748b;
+			line-height: 1.7;
+			max-width: 600px;
+		}
+
+		.project-tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			margin-top: 16px;
+		}
+
+		.project-tags span {
+			padding: 6px 14px;
+			background: #fafafa;
+			color: #64748b;
+			border-radius: 100px;
+			font-size: 0.8rem;
+			font-weight: 500;
+		}
+
+		/* About */
+		.about-content {
+			display: flex;
+			flex-direction: column;
+			gap: 24px;
+		}
+
+		.about-content p {
+			color: #64748b;
+			font-size: 1.05rem;
+			line-height: 1.8;
+			max-width: 720px;
+		}
+
+		/* Services */
+		.services h2 {
+			font-size: 2rem;
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			margin-bottom: 48px;
+		}
+
+		.services-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 24px;
+		}
+
+		.service {
+			padding: 32px;
+			background: #fafafa;
+			border-radius: 12px;
+		}
+
+		.service-number {
+			font-size: 0.875rem;
+			font-weight: 600;
+			color: #64748b;
+			margin-bottom: 24px;
+			display: block;
+		}
+
+		.service h3 {
+			font-size: 1.25rem;
+			font-weight: 600;
+			margin-bottom: 12px;
+		}
+
+		.service p {
+			color: #64748b;
+			font-size: 0.95rem;
+			line-height: 1.1.7;
+		}
+
+		/* Contact */
+		.contact h2 {
+			font-size: 2rem;
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			margin-bottom: 32px;
+		}
+
+		.email-link {
+			display: inline-block;
+			background: #09090b;
+			color: #ffffff;
+			border: none;
+		}
+
+		.email-link:hover {
+			background: #18181b;
+		}
+
+		/* Footer */
+		.footer {
+			padding: 40px 0;
+			border-top: 1px solid #e4e4e7;
+		}
+
+		.footer p {
+			color: #64748b;
+			font-size: 0.875rem;
+			text-align: center;
+		}
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			.hero {
+				padding: 80px 0;
+			}
+
+			.services-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.actions {
+				flex-direction: column;
+			}
+
+			.btn-primary,
+			.btn-secondary,
+			.email-link {
+				width: 100%;
+			}
+		}
+	</style>
+
+	<script>
+		// Smooth scroll settings
+		const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const isMobile = window.matchMedia('(max-width: 768px)').matches;
+		const smoothWrapper = document.getElementById('smooth-wrapper');
+
+		// Enable smooth scroll only on desktop without reduced motion
+		if (!prefersReduced && !isMobile && smoothWrapper) {
+			let targetY = 0;
+			let currentY = 0;
+			const ease = 0.08;
+
+			function lerp(a, b, t) {
+				return a + (b - a) * t;
+			}
+
+			function setBodyHeight() {
+				document.body.style.height = smoothWrapper.scrollHeight + 'px';
+			}
+
+			function smoothScroll() {
+				targetY = window.scrollY;
+				currentY = lerp(currentY, targetY, ease);
+
+				if (Math.abs(targetY - currentY) < 0.05) {
+					currentY = targetY;
+				}
+
+				smoothWrapper.style.transform = `translateY(${-currentY}px)`;
+
+				// Manually check reveal animations based on current scroll position
+				const viewportHeight = window.innerHeight;
+				document.querySelectorAll('.animate-in').forEach((item) => {
+					const rect = item.getBoundingClientRect();
+					const isBelowViewport = rect.top > viewportHeight * 0.75;
+					const isAboveViewport = rect.bottom < 0;
+
+					if (isBelowViewport || isAboveViewport) {
+						item.classList.remove('visible');
+					} else {
+						item.classList.add('visible');
+					}
+				});
+
+				requestAnimationFrame(smoothScroll);
+			}
+
+			// Initialize smooth scroll
+			setBodyHeight();
+			smoothScroll();
+
+			// Update body height on resize
+			window.addEventListener('resize', setBodyHeight);
+		} else {
+			// Standard scroll for mobile and reduced motion
+			const observerOptions = {
+				threshold: 0.1,
+				rootMargin: '0px 0px -50px 0px'
+			};
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
+						entry.target.classList.add('visible');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, observerOptions);
+
+			// Observe all elements with .animate-in class
+			function setupAnimations() {
+				document.querySelectorAll('.animate-in').forEach(el => {
+					observer.observe(el);
+				});
+			}
+
+			// Run on DOM ready
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', setupAnimations);
+			} else {
+				setupAnimations();
+			}
+		}
+	</script>
+</Layout>
