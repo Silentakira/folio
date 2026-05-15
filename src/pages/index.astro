@@ -15,11 +15,11 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 				<p class="overline animate-in">UI/UX & Brand Designer</p>
 
 				<h1 class="animate-in">
-					<span class="scramble-text">Design that looks <span class="text-outline">clean</span>. Works <span class="text-accent">sharper</span>.</span>
+					<span class="scramble-text">I design brands and interfaces that <span class="text-accent">work</span>.</span>
 				</h1>
 
 				<p class="description animate-in">
-					I help businesses fix confusing interfaces and weak brand systems — so more people understand what to do, and fewer leave before they do it.
+					UI/UX & brand design. Logos, visual identity systems, websites that people actually understand how to use.
 				</p>
 
 				<div class="actions animate-in">
@@ -81,19 +81,16 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		<section class="about">
 			<div class="container">
 				<p class="section-label animate-in">About</p>
-				<h2 class="section-title animate-in">Nice to meet you.</h2>
+				<h2 class="section-title animate-in">About me</h2>
 				<div class="about-content">
 					<p class="animate-in">
-						I'm <span class="text-accent">Akira Uriel</span> — UI/UX & brand designer and intern at Boutik Studio, based in Braga.
+						I'm <span class="text-accent">Akira Uriel</span> — UI/UX and brand designer based in Braga, Portugal.
 					</p>
 					<p class="animate-in">
-						I design things that feel calm on the surface and intentional underneath. Simple systems, useful motion, interfaces and identities that help people decide without thinking too hard.
+						I help businesses fix weak branding and confusing interfaces. logos, visual identity systems, UI/UX design that makes sense to users.
 					</p>
 					<p class="animate-in">
-						Miau Studios is the project that best shows how I work: minimal doesn't have to mean cold. It can be clean, sharp, and still very practical.
-					</p>
-					<p class="animate-in">
-						I take freelance projects for businesses that need clearer branding, better websites, or a design audit.
+						Currently interning at Boutik Studio. Taking freelance projects for brand identity, UI/UX design, and design audits.
 					</p>
 				</div>
 			</div>
@@ -107,31 +104,31 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 					<div class="process-step animate-in">
 						<span class="step-number">01</span>
 						<h3><span class="text-accent">Understand</span></h3>
-						<p>Before anything gets designed, I need to know what's actually broken. We talk through your goals, your users, and where things are falling apart.</p>
+						<p>I learn what your business needs and what your users are struggling with.</p>
 					</div>
 
 					<div class="process-step animate-in">
 						<span class="step-number">02</span>
 						<h3><span class="text-accent">Define</span></h3>
-						<p>I map out the problem clearly — what needs to change, what to prioritize, and what success looks like before I open a single file.</p>
+						<p>We agree on what to build and what success looks like.</p>
 					</div>
 
 					<div class="process-step animate-in">
 						<span class="step-number">03</span>
 						<h3><span class="text-accent">Design</span></h3>
-						<p>Clean, intentional work. Every decision has a reason. I'll show you the thinking, not just the output.</p>
+						<p>I create the work — logos, UI, systems — with clear reasoning behind every decision.</p>
 					</div>
 
 					<div class="process-step animate-in">
 						<span class="step-number">04</span>
 						<h3><span class="text-accent">Refine</span></h3>
-						<p>We review together, tighten what needs tightening, and make sure the result actually solves the problem we started with.</p>
+						<p>We review what works, fix what doesn't, and polish the details.</p>
 					</div>
 
 					<div class="process-step animate-in">
 						<span class="step-number">05</span>
 						<h3><span class="text-accent">Deliver</span></h3>
-						<p>Final files, ready to use. And if something needs a tweak after launch, I'm not gone.</p>
+						<p>You get final files ready to launch, with follow-up support if needed.</p>
 					</div>
 				</div>
 			</div>
@@ -360,7 +357,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		}
 
 		.hero h1 {
-			font-family: 'Syne', sans-serif;
+			font-family: 'Space Grotesk', sans-serif;
 			font-size: clamp(2.5rem, 6vw, 4rem);
 			font-weight: 700;
 			line-height: 1.1;
@@ -496,7 +493,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		}
 
 		.section-title {
-			font-family: 'Syne', sans-serif;
+			font-family: 'Space Grotesk', sans-serif;
 			font-size: clamp(2rem, 4vw, 2.5rem);
 			font-weight: 700;
 			letter-spacing: -0.02em;
@@ -622,8 +619,9 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 
 		.process-steps {
 			display: flex;
-			flex-direction: column;
+			flex-direction: row;
 			gap: 48px;
+			justify-content: space-between;
 		}
 
 		.process-step {
