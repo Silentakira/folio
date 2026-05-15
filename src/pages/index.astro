@@ -102,33 +102,53 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 				<h2 class="animate-in">How I work</h2>
 				<div class="process-steps">
 					<div class="process-step animate-in">
-						<span class="step-number">01</span>
-						<h3><span class="text-accent">Understand</span></h3>
-						<p>I learn what your business needs and what your users are struggling with.</p>
+						<div class="step-left">
+							<span class="step-number">01</span>
+							<p>I learn what your business needs and what your users are struggling with.</p>
+						</div>
+						<div class="step-right">
+							<h3><span class="text-accent">Understand</span></h3>
+						</div>
 					</div>
 
 					<div class="process-step animate-in">
-						<span class="step-number">02</span>
-						<h3><span class="text-accent">Define</span></h3>
-						<p>We agree on what to build and what success looks like.</p>
+						<div class="step-left">
+							<span class="step-number">02</span>
+							<p>We agree on what to build and what success looks like.</p>
+						</div>
+						<div class="step-right">
+							<h3><span class="text-accent">Define</span></h3>
+						</div>
 					</div>
 
 					<div class="process-step animate-in">
-						<span class="step-number">03</span>
-						<h3><span class="text-accent">Design</span></h3>
-						<p>I create the work — logos, UI, systems — with clear reasoning behind every decision.</p>
+						<div class="step-left">
+							<span class="step-number">03</span>
+							<p>I create the work — logos, UI, systems — with clear reasoning behind every decision.</p>
+						</div>
+						<div class="step-right">
+							<h3><span class="text-accent">Design</span></h3>
+						</div>
 					</div>
 
 					<div class="process-step animate-in">
-						<span class="step-number">04</span>
-						<h3><span class="text-accent">Refine</span></h3>
-						<p>We review what works, fix what doesn't, and polish the details.</p>
+						<div class="step-left">
+							<span class="step-number">04</span>
+							<p>We review what works, fix what doesn't, and polish the details.</p>
+						</div>
+						<div class="step-right">
+							<h3><span class="text-accent">Refine</span></h3>
+						</div>
 					</div>
 
 					<div class="process-step animate-in">
-						<span class="step-number">05</span>
-						<h3><span class="text-accent">Deliver</span></h3>
-						<p>You get final files ready to launch, with follow-up support if needed.</p>
+						<div class="step-left">
+							<span class="step-number">05</span>
+							<p>You get final files ready to launch, with follow-up support if needed.</p>
+						</div>
+						<div class="step-right">
+							<h3><span class="text-accent">Deliver</span></h3>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -620,14 +640,28 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		.process-steps {
 			display: flex;
 			flex-direction: column;
-			gap: 48px;
+			gap: 64px;
 		}
 
 		.process-step {
 			display: grid;
-			grid-template-columns: auto 1fr;
-			gap: 24px;
+			grid-template-columns: 1fr 200px;
+			gap: 48px;
 			align-items: start;
+		}
+
+		.step-left {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+
+		.step-right {
+			display: flex;
+			align-items: start;
+			justify-content: flex-start;
+			text-align: left;
+			transform: translateY(-16px);
 		}
 
 		.step-number {
@@ -637,14 +671,13 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			letter-spacing: 0.1em;
 		}
 
-		.process-step h3 {
+		.step-right h3 {
 			font-size: 1.5rem;
 			font-weight: 600;
 			letter-spacing: -0.02em;
-			margin-bottom: 8px;
 		}
 
-		.process-step p {
+		.step-left p {
 			color: #64748b;
 			font-size: 1rem;
 			line-height: 1.7;
@@ -894,7 +927,12 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 
 			.process-step {
 				grid-template-columns: 1fr;
-				gap: 12px;
+				gap: 16px;
+			}
+
+			.step-right {
+				justify-content: flex-start;
+				text-align: left;
 			}
 
 			.step-number {
@@ -902,12 +940,11 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 				color: #d4d4d8;
 			}
 
-			.process-step h3 {
+			.step-right h3 {
 				font-size: 1.25rem;
-				margin-bottom: 6px;
 			}
 
-			.process-step p {
+			.step-left p {
 				font-size: 0.95rem;
 				line-height: 1.6;
 			}
