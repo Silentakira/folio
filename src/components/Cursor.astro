@@ -16,7 +16,7 @@
 		pointer-events: none;
 		z-index: 10000;
 		opacity: 0;
-		transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+		transition: width 0.15s ease, height 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
 		will-change: transform;
 	}
 
@@ -24,16 +24,20 @@
 		opacity: 1;
 	}
 
-	/* Light background hover */
-	.custom-cursor.hover-light {
-		background-color: #e4e4e7;
-		border-color: #e4e4e7;
+	/* Hover states */
+	.custom-cursor.hover-dark {
+		background-color: #09090b;
+		border-color: #09090b;
 	}
 
-	/* Dark background hover */
-	.custom-cursor.hover-dark {
-		background-color: #f8f8f8;
-		border-color: #f8f8f8;
+	.custom-cursor.hover-light {
+		background-color: #ffffff;
+		border-color: #ffffff;
+	}
+
+	.custom-cursor.hover-accent {
+		background-color: var(--accent-green);
+		border-color: var(--accent-green);
 	}
 
 	@media (max-width: 768px) {
@@ -56,6 +60,7 @@
 		let cursorX = 0;
 		let cursorY = 0;
 		let firstMove = true;
+		let lastUpdate = 0;
 
 		document.addEventListener('mousemove', (e: MouseEvent) => {
 			mouseX = e.clientX;
@@ -66,8 +71,12 @@
 				firstMove = false;
 			}
 
-			// Check what's under cursor and update state
-			updateCursorState(e.clientX, e.clientY);
+			// Throttle cursor color updates to every 50ms
+			const now = Date.now();
+			if (now - lastUpdate > 50) {
+				updateCursorState(e.clientX, e.clientY);
+				lastUpdate = now;
+			}
 		});
 
 		function updateCursorState(x: number, y: number) {
@@ -75,129 +84,72 @@
 			if (!element) return;
 
 			// Check if hovering over interactive element
-			const isInteractive = element.matches('a, button, .cursor-interact') ||
-			               element.closest('a, button, .cursor-interact');
+			const isInteractive = element.matches('a, button, .cursor-interact, .text-accent') ||
+			               element.closest('a, button, .cursor-interact, .text-accent');
+
+			// Remove all hover states
+			cursor.classList.remove('hover-dark', 'hover-light', 'hover-accent');
 
 			if (isInteractive) {
-				// Get background color of element
 				const styles = window.getComputedStyle(element);
 				const bgColor = styles.backgroundColor;
+				const isLight = isLightBackground(bgColor);
 
-				// Determine if background is light or dark
-				const isLightBg = isLightBackground(bgColor);
-
-				// Remove old classes
-				cursor.classList.remove('hover-light', 'hover-dark');
-
-				// Add appropriate class
-				if (isLightBg) {
+				if (element.matches('.text-accent') || element.closest('.text-accent')) {
+					cursor.classList.add('hover-accent');
+				} else if (isLight) {
 					cursor.classList.add('hover-light');
 				} else {
 					cursor.classList.add('hover-dark');
 				}
-			} else {
-				// Not hovering over interactive element
-				cursor.classList.remove('hover-light', 'hover-dark');
 			}
 		}
 
 		function isLightBackground(bgColor: string): boolean {
-			// Check if background is white/light colored
-			if (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') {
-				// Check parent's background
-				return false; // Will use body background
+			if (!bgColor || bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') {
+				return true;
 			}
 
-			// Parse RGB values
 			const rgbMatch = bgColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
 			if (rgbMatch) {
-				const r = parseInt(rgbMatch[1]);
-				const g = parseInt(rgbMatch[2]);
-				const b = parseInt(rgbMatch[3]);
-
-				// Calculate brightness
+				const [, r, g, b] = rgbMatch.map(Number);
 				const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 				return brightness > 128;
 			}
 
-			// Parse RGBA values
 			const rgbaMatch = bgColor.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)$/);
 			if (rgbaMatch) {
-				const r = parseInt(rgbaMatch[1]);
-				const g = parseInt(rgbaMatch[2]);
-				const b = parseInt(rgbaMatch[3]);
-				const a = parseFloat(rgbaMatch[4]);
-
-				if (a < 0.5) {
-					return false; // Too transparent
-				}
-
+				const [, r, g, b, a] = [parseInt(rgbaMatch[1]), parseInt(rgbaMatch[2]), parseInt(rgbaMatch[3]), parseFloat(rgbaMatch[4])];
+				if (a < 0.3) return true;
 				const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 				return brightness > 128;
 			}
 
-			// Check hex colors
 			const hexMatch = bgColor.match(/^#([0-9a-f]{3}){1,2}$/i);
 			if (hexMatch) {
 				const hex = hexMatch[1];
 				const r = parseInt(hex[0] + hex[0], 16);
 				const g = parseInt(hex[1] + hex[1], 16);
 				const b = parseInt(hex[2] + hex[2], 16);
-
 				const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 				return brightness > 128;
 			}
 
-			return false;
+			return true;
 		}
 
 		function animate() {
 			const dx = mouseX - cursorX;
 			const dy = mouseY - cursorY;
 
-			cursorX += dx * 0.15;
-			cursorY += dy * 0.15;
+			cursorX += dx * 0.2;
+			cursorY += dy * 0.2;
 
-			cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+			cursor.style.transform = `translate(${cursorX - 10}px, ${cursorY - 10}px)`;
 
 			requestAnimationFrame(animate);
 		}
 
 		animate();
-
-		// Re-run periodically for dynamic elements
-		setInterval(() => {
-			setupHoverEffects();
-		}, 2000);
-
-		// Setup hover effects
-		function setupHoverEffects() {
-			const interactives = document.querySelectorAll('a, button, .cursor-interact');
-
-			interactives.forEach((el) => {
-				// Remove old listeners
-				el.removeEventListener('mouseenter', updateCursorState);
-				el.removeEventListener('mouseleave', clearCursorState);
-
-				// Add new listeners
-				el.addEventListener('mouseenter', () => {
-					// Cursor state will be updated in mousemove
-				});
-
-				el.addEventListener('mouseleave', () => {
-					cursor?.classList.remove('hover-light', 'hover-dark');
-				});
-			});
-		}
-
-		function clearCursorState() {
-			cursor?.classList.remove('hover-light', 'hover-dark');
-		}
-
-		if (document.readyState === 'loading') {
-			document.addEventListener('DOMContentLoaded', setupHoverEffects);
-		} else {
-			setupHoverEffects();
-		}
 	}
 </script>

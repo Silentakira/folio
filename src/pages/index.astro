@@ -15,7 +15,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 				<p class="overline animate-in">UI/UX & Brand Designer</p>
 
 				<h1 class="animate-in">
-					<span class="scramble-text">Design that looks clean. Works sharper.</span>
+					<span class="scramble-text">Design that looks <span class="text-outline">clean</span>. Works <span class="text-accent">sharper</span>.</span>
 				</h1>
 
 				<p class="description animate-in">
@@ -32,6 +32,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		<section class="work" id="work">
 			<div class="container">
 				<p class="section-label animate-in">Selected Work</p>
+				<h2 class="section-title animate-in">Recent Projects</h2>
 				<div class="projects">
 					<a href="/work/miau-studios" class="project animate-in cursor-interact">
 						<div class="project-header">
@@ -80,9 +81,10 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		<section class="about">
 			<div class="container">
 				<p class="section-label animate-in">About</p>
+				<h2 class="section-title animate-in">Nice to meet you.</h2>
 				<div class="about-content">
 					<p class="animate-in">
-						I'm Akira Uriel — UI/UX & brand designer and intern at Boutik Studio, based in Braga.
+						I'm <span class="text-accent">Akira Uriel</span> — UI/UX & brand designer and intern at Boutik Studio, based in Braga.
 					</p>
 					<p class="animate-in">
 						I design things that feel calm on the surface and intentional underneath. Simple systems, useful motion, interfaces and identities that help people decide without thinking too hard.
@@ -104,31 +106,31 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 				<div class="process-steps">
 					<div class="process-step animate-in">
 						<span class="step-number">01</span>
-						<h3>Understand</h3>
+						<h3><span class="text-accent">Understand</span></h3>
 						<p>Before anything gets designed, I need to know what's actually broken. We talk through your goals, your users, and where things are falling apart.</p>
 					</div>
 
 					<div class="process-step animate-in">
 						<span class="step-number">02</span>
-						<h3>Define</h3>
+						<h3><span class="text-accent">Define</span></h3>
 						<p>I map out the problem clearly — what needs to change, what to prioritize, and what success looks like before I open a single file.</p>
 					</div>
 
 					<div class="process-step animate-in">
 						<span class="step-number">03</span>
-						<h3>Design</h3>
+						<h3><span class="text-accent">Design</span></h3>
 						<p>Clean, intentional work. Every decision has a reason. I'll show you the thinking, not just the output.</p>
 					</div>
 
 					<div class="process-step animate-in">
 						<span class="step-number">04</span>
-						<h3>Refine</h3>
+						<h3><span class="text-accent">Refine</span></h3>
 						<p>We review together, tighten what needs tightening, and make sure the result actually solves the problem we started with.</p>
 					</div>
 
 					<div class="process-step animate-in">
 						<span class="step-number">05</span>
-						<h3>Deliver</h3>
+						<h3><span class="text-accent">Deliver</span></h3>
 						<p>Final files, ready to use. And if something needs a tweak after launch, I'm not gone.</p>
 					</div>
 				</div>
@@ -138,7 +140,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		<section class="services">
 			<div class="container">
 				<p class="section-label animate-in">Services</p>
-				<h2 class="animate-in">What I can help with.</h2>
+				<h2 class="section-title animate-in">What I can help with.</h2>
 				<div class="services-list">
 					<div class="service-item animate-in">
 						<div class="service-header">
@@ -170,7 +172,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		<section class="contact" id="contact">
 			<div class="container">
 				<p class="section-label animate-in">Contact</p>
-				<h2 class="animate-in">Your design should be easy to choose. Let's make sure it is.</h2>
+				<h2 class="section-title animate-in">Your design should be easy to choose. Let's make sure it is.</h2>
 				<a href="mailto:silencedakira@gmail.com" class="email-link cursor-interact animate-in">silencedakira@gmail.com</a>
 			</div>
 		</section>
@@ -358,12 +360,25 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		}
 
 		.hero h1 {
+			font-family: 'Syne', sans-serif;
 			font-size: clamp(2.5rem, 6vw, 4rem);
 			font-weight: 700;
 			line-height: 1.1;
-			letter-spacing: -0.03em;
+			letter-spacing: -0.02em;
 			margin-bottom: 24px;
 			color: #09090b;
+		}
+
+		.text-outline {
+			color: transparent;
+			-webkit-text-stroke: 2px #09090b;
+			text-stroke: 2px #09090b;
+			font-weight: 800;
+		}
+
+		.text-accent {
+			color: var(--accent-green);
+			font-weight: 800;
 		}
 
 		.description {
@@ -411,7 +426,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: #09090b;
+			background: linear-gradient(135deg, #09090b 0%, var(--accent-green) 100%);
 			transform: scaleX(0);
 			transform-origin: right;
 			transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -440,7 +455,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: #64748b;
+			background: var(--accent-green);
 			transform: scaleX(0);
 			transform-origin: right;
 			transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -450,6 +465,11 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		.btn-secondary:hover::before {
 			transform: scaleX(1);
 			transform-origin: left;
+		}
+
+		.btn-secondary:hover {
+			color: #ffffff;
+			transition-delay: 0.05s;
 		}
 
 		.btn-secondary:hover {
@@ -472,7 +492,17 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			font-weight: 600;
 			letter-spacing: 0.1em;
 			text-transform: uppercase;
-			margin-bottom: 24px;
+			margin-bottom: 16px;
+		}
+
+		.section-title {
+			font-family: 'Syne', sans-serif;
+			font-size: clamp(2rem, 4vw, 2.5rem);
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			margin-bottom: 32px;
+			color: #09090b;
+			line-height: 1.2;
 		}
 
 		/* Projects */
@@ -498,9 +528,10 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			bottom: -8px;
 			left: 0;
 			width: 0;
-			height: 1px;
-			background: #09090b;
+			height: 2px;
+			background: var(--accent-green);
 			transition: width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+			border-radius: 2px;
 		}
 
 		.project:hover::after {
@@ -508,7 +539,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		}
 
 		.project:hover h3 {
-			color: #09090b;
+			color: var(--accent-green);
 			transform: translateX(4px);
 		}
 
@@ -721,27 +752,15 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			border-radius: 6px;
 			overflow: hidden;
 			z-index: 1;
-			transition: color 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+			transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 		}
 
-		.email-link::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
+		.email-link:hover {
 			background: #18181b;
-			transform: scaleX(0);
-			transform-origin: right;
-			transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-			z-index: -1;
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 		}
 
-		.email-link:hover::before {
-			transform: scaleX(1);
-			transform-origin: left;
-		}
 
 		/* Footer */
 		.footer {
@@ -756,10 +775,10 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			gap: 24px;
 		}
 
-		.footer p {
+		.footer-content > p {
 			color: #64748b;
 			font-size: 0.875rem;
-			text-align: right;
+			text-align: left;
 		}
 
 		.social-links {
@@ -990,7 +1009,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		if (!prefersReduced && !isMobile && smoothWrapper) {
 			let targetY = 0;
 			let currentY = 0;
-			const ease = 0.08;
+			const ease = 0.1;
 
 			function lerp(a, b, t) {
 				return a + (b - a) * t;
@@ -999,6 +1018,10 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			function setBodyHeight() {
 				document.body.style.height = smoothWrapper.scrollHeight + 'px';
 			}
+
+			// Cache animated elements
+			const animatedElements = document.querySelectorAll('.animate-in');
+			let lastCheckTime = 0;
 
 			function smoothScroll() {
 				targetY = window.scrollY;
@@ -1010,19 +1033,23 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 
 				smoothWrapper.style.transform = `translateY(${-currentY}px)`;
 
-				// Manually check reveal animations based on current scroll position
-				const viewportHeight = window.innerHeight;
-				document.querySelectorAll('.animate-in').forEach((item) => {
-					const rect = item.getBoundingClientRect();
-					const isBelowViewport = rect.top > viewportHeight * 0.75;
-					const isAboveViewport = rect.bottom < 0;
+				// Only check animations every 100ms instead of every frame
+				const now = Date.now();
+				if (now - lastCheckTime > 100) {
+					const viewportHeight = window.innerHeight;
+					animatedElements.forEach((item) => {
+						const rect = item.getBoundingClientRect();
+						const isBelowViewport = rect.top > viewportHeight * 0.75;
+						const isAboveViewport = rect.bottom < 0;
 
-					if (isBelowViewport || isAboveViewport) {
-						item.classList.remove('visible');
-					} else {
-						item.classList.add('visible');
-					}
-				});
+						if (isBelowViewport || isAboveViewport) {
+							item.classList.remove('visible');
+						} else {
+							item.classList.add('visible');
+						}
+					});
+					lastCheckTime = now;
+				}
 
 				requestAnimationFrame(smoothScroll);
 			}
@@ -1031,8 +1058,12 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			setBodyHeight();
 			smoothScroll();
 
-			// Update body height on resize
-			window.addEventListener('resize', setBodyHeight);
+			// Update body height on resize (debounced)
+			let resizeTimeout;
+			window.addEventListener('resize', () => {
+				clearTimeout(resizeTimeout);
+				resizeTimeout = setTimeout(setBodyHeight, 150);
+			});
 		} else {
 			// Standard scroll for mobile and reduced motion
 			const observerOptions = {
