@@ -1,0 +1,527 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Cursor from '../../components/Cursor.astro';
+import AsciiTextAnimation from '../../components/AsciiTextAnimation.astro';
+
+export async function getStaticPaths() {
+  return [
+    { params: { project: 'miau-studios' } },
+    { params: { project: 'vibe' } },
+    { params: { project: 'nonna-co' } },
+  ];
+}
+
+const { project } = Astro.params;
+
+// Project data
+const projects = {
+  'miau-studios': {
+    title: 'Miau Studios',
+    client: 'School Project · Indie Game Studio',
+    role: 'Co-Founder & Designer',
+    timeline: '3 weeks',
+    tags: ['Brand System', 'Art Direction', 'Game Design'],
+    description: 'Full brand and game design for an indie game studio — skate-inspired aesthetics with clean, unique visuals that don\'t feel like everything else.',
+    overview: 'What started as a school project for a big chunk of my grade became something real. My friend Joana Soares and I ended up actually creating an indie game dev studio together. This is one of my dearest projects because it tested both my patience and design skills — I had to create an entire game alongside the brand identity.',
+    challenge: 'Create a skate-inspired design that felt clean and unique — something that stood out from the typical indie game aesthetics you see everywhere. It needed to be distinctive while remaining professional.',
+    solution: 'Built a visual identity around skate culture aesthetics but refined: bold rounded typography, hard black linework for edge, and playful candy colors that feel fun without being childish. Every design choice had to work for both the studio brand and the actual game.',
+    results: 'The project earned top marks and successfully launched Miau Studios as a real indie game development company. The brand identity captured our vision of clean, unique game design with skate-inspired aesthetics.',
+    websiteUrl: 'https://miau-studios-creative.vercel.app'
+  },
+  'vibe': {
+    title: 'Vibe',
+    client: 'Design Agency',
+    role: 'Brand Designer',
+    timeline: '2 weeks',
+    tags: ['Branding', 'Agency Identity', 'Conversion'],
+    description: 'Neobrutalist design agency that fixes problems that hurt both your aesthetic and your conversion rates.',
+    overview: 'A design agency with a neobrutalist aesthetic that doesn\'t just make things look good — it fixes the underlying problems that are killing your conversions.',
+    challenge: 'Create a design agency brand that stands out in a crowded market while communicating that we solve real business problems, not just make things pretty.',
+    solution: 'Developed a bold neobrutalist identity with strong typography, harsh contrasts, and unapologetic visuals. The design itself demonstrates our philosophy: form follows function, and good design converts.',
+    results: 'Brand identity successfully positions Vibe as a design agency that cares about ROI as much as aesthetics. The neobrutalist approach attracts clients looking for bold, results-driven design work.',
+    websiteUrl: '#'
+  },
+  'nonna-co': {
+    title: 'NONNA & CO',
+    client: 'Concept Brand',
+    role: 'Logo Designer',
+    timeline: '1 week',
+    tags: ['Logo Design', 'Brand Concept'],
+    description: 'Concept pasta store logo design with plans to expand into full brand identity.',
+    overview: 'A logo concept for a traditional Italian pasta store that balances heritage with modern simplicity. Currently just the logo, but the vision is to expand this into a complete brand identity.',
+    challenge: 'Create a logo for a pasta store that feels authentic and traditional without being cliché. It needs to work for a modern brand while respecting Italian culinary heritage.',
+    solution: 'Designed a clean, timeless logo that combines traditional Italian typography sensibilities with modern minimalism. The concept leaves room for expansion into packaging, signage, and full brand identity.',
+    results: 'Logo concept successfully established the foundation for what will become a complete brand identity. The design is versatile and ready to scale across multiple touchpoints as the concept develops.',
+    websiteUrl: '#'
+  }
+};
+
+const projectData = projects[project];
+---
+
+<Layout title={`${projectData.title} - Case Study`}>
+	<Cursor />
+	<AsciiTextAnimation />
+
+	<div id="smooth-wrapper">
+		<main class="case-study">
+			<nav class="case-study-nav">
+				<div class="container">
+					<div class="nav-content">
+						<a href="/#work" class="back-link cursor-interact">← Back to work</a>
+						{projectData.websiteUrl && projectData.websiteUrl !== '#' && (
+							<a href={projectData.websiteUrl} target="_blank" rel="noopener" class="visit-link cursor-interact">
+								Visit {projectData.title} →
+							</a>
+						)}
+					</div>
+				</div>
+			</nav>
+
+			<header class="case-study-header">
+				<div class="container">
+					<p class="case-study-meta animate-in">{projectData.client} · {projectData.role}</p>
+					<h1 class="animate-in">{projectData.title}</h1>
+					<p class="case-study-description animate-in">{projectData.overview}</p>
+					<div class="case-study-tags animate-in">
+						{projectData.tags.map(tag => <span class="tag">{tag}</span>)}
+					</div>
+				</div>
+			</header>
+
+			<section class="case-study-section">
+				<div class="container">
+					<h2 class="animate-in">The Challenge</h2>
+					<p class="animate-in">{projectData.challenge}</p>
+				</div>
+			</section>
+
+			<section class="case-study-section">
+				<div class="container">
+					<h2 class="animate-in">The Solution</h2>
+					<p class="animate-in">{projectData.solution}</p>
+				</div>
+			</section>
+
+			<section class="case-study-section results">
+				<div class="container">
+					<h2 class="animate-in">Results</h2>
+					<p class="animate-in">{projectData.results}</p>
+				</div>
+			</section>
+
+			<section class="case-study-section">
+				<div class="container">
+					<h2 class="animate-in">Project Details</h2>
+					<div class="project-details-grid">
+						<div class="detail-item animate-in">
+							<span class="detail-label">Timeline</span>
+							<span class="detail-value">{projectData.timeline}</span>
+						</div>
+						<div class="detail-item animate-in">
+							<span class="detail-label">Role</span>
+							<span class="detail-value">{projectData.role}</span>
+						</div>
+						<div class="detail-item animate-in">
+							<span class="detail-label">Client</span>
+							<span class="detail-value">{projectData.client}</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<nav class="case-study-footer">
+				<div class="container">
+					<a href="/#work" class="back-link cursor-interact">← View more work</a>
+					<a href="mailto:arthurkayedesign@gmail.com" class="email-link cursor-interact animate-in">Start a project like this</a>
+				</div>
+			</nav>
+		</main>
+	</div>
+</Layout>
+
+<style>
+	.container {
+		max-width: 700px;
+		margin: 0 auto;
+		padding: 0 24px;
+	}
+
+	/* Navigation */
+	.case-study-nav {
+		padding: 20px 0;
+		border-bottom: 1px solid #e4e4e7;
+	}
+
+	.nav-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.back-link,
+	.visit-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 8px 0;
+		font-size: 0.95rem;
+		font-weight: 500;
+		color: #64748b;
+		text-decoration: none;
+		transition: color 0.2s ease;
+		position: relative;
+	}
+
+	.back-link:hover,
+	.visit-link:hover {
+		color: #09090b;
+	}
+
+	.visit-link::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		background: #09090b;
+		transform: scaleX(0);
+		transform-origin: right;
+		transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+	}
+
+	.visit-link:hover::after {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+
+	/* Header */
+	.case-study-header {
+		padding: 80px 0;
+		border-bottom: 1px solid #e4e4e7;
+	}
+
+	.case-study-meta {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #64748b;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		margin-bottom: 24px;
+	}
+
+	.case-study-header h1 {
+		font-size: clamp(2.5rem, 6vw, 4rem);
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+		margin-bottom: 24px;
+		color: #09090b;
+	}
+
+	.case-study-description {
+		font-size: 1.25rem;
+		color: #64748b;
+		line-height: 1.7;
+		margin-bottom: 32px;
+		max-width: 580px;
+	}
+
+	.case-study-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.tag {
+		padding: 6px 16px;
+		background: #fafafa;
+		color: #64748b;
+		border-radius: 100px;
+		font-size: 0.875rem;
+		font-weight: 500;
+	}
+
+	/* Sections */
+	.case-study-section {
+		padding: 80px 0;
+		border-bottom: 1px solid #e4e4e7;
+	}
+
+	.case-study-section:last-of-type {
+		border-bottom: none;
+	}
+
+	.case-study-section h2 {
+		font-size: 2rem;
+		font-weight: 700;
+			letter-spacing: -0.02em;
+		margin-bottom: 24px;
+		color: #09090b;
+	}
+
+	.case-study-section p {
+		font-size: 1.125rem;
+		color: #64748b;
+		line-height: 1.7;
+		max-width: 600px;
+	}
+
+	/* Results section */
+	.results {
+		background: #fafafa;
+		margin: 0 -24px;
+		padding: 80px 24px;
+	}
+
+	/* Project Details */
+	.project-details-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 32px;
+		margin-top: 48px;
+	}
+
+	.detail-item {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.detail-label {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #64748b;
+	}
+
+	.detail-value {
+		font-size: 1rem;
+		color: #09090b;
+		font-weight: 500;
+	}
+
+	/* Footer */
+	.case-study-footer {
+		padding: 60px 0;
+		border-top: 1px solid #e4e4e7;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.case-study-footer .container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+
+	.email-link {
+		padding: 12px 24px;
+		background: #09090b;
+		color: #ffffff;
+		position: relative;
+		border-radius: 6px;
+		overflow: hidden;
+		z-index: 1;
+		transition: color 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.email-link::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: #18181b;
+		transform: scaleX(0);
+		transform-origin: right;
+		transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+		z-index: -1;
+	}
+
+	.email-link:hover::before {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+
+	.email-link:hover {
+		color: #ffffff;
+	}
+
+	/* Animations */
+	.animate-in {
+		opacity: 0;
+		transform: translateY(24px);
+		transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+	                transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+		will-change: opacity, transform;
+	}
+
+	.animate-in.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	/* Animation delays */
+	.case-study-meta.animate-in {
+		transition-delay: 0ms;
+	}
+
+	.case-study-header h1.animate-in {
+		transition-delay: 80ms;
+	}
+
+	.case-study-description.animate-in {
+		transition-delay: 160ms;
+	}
+
+	.case-study-tags.animate-in {
+		transition-delay: 240ms;
+	}
+
+	/* Responsive */
+	@media (max-width: 768px) {
+		.container {
+			padding: 0 20px;
+		}
+
+		.case-study-header {
+			padding: 60px 0;
+		}
+
+		.case-study-section {
+			padding: 60px 0;
+		}
+
+		.case-study-header h1 {
+			font-size: clamp(2rem, 6vw, 3rem);
+		}
+
+		.case-study-description {
+			font-size: 1.1rem;
+		}
+
+		.case-study-section h2 {
+			font-size: 1.75rem;
+		}
+
+		.project-details-grid {
+			grid-template-columns: 1fr;
+			gap: 24px;
+		}
+
+		.case-study-footer {
+			flex-direction: column;
+			gap: 20px;
+			text-align: center;
+		}
+
+		.case-study-footer .container {
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		.results {
+			margin: 0 -20px;
+			padding: 60px 20px;
+		}
+
+		.nav-content {
+			flex-direction: column;
+			gap: 16px;
+			align-items: flex-start;
+		}
+	}
+</style>
+
+<script>
+	// Smooth scroll settings
+	const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	const isMobile = window.matchMedia('(max-width: 768px)').matches;
+	const smoothWrapper = document.getElementById('smooth-wrapper');
+
+	// Enable smooth scroll only on desktop without reduced motion
+	if (!prefersReduced && !isMobile && smoothWrapper) {
+		let targetY = 0;
+		let currentY = 0;
+		const ease = 0.08;
+
+		function lerp(a, b, t) {
+			return a + (b - a) * t;
+		}
+
+		function setBodyHeight() {
+			document.body.style.height = smoothWrapper.scrollHeight + 'px';
+		}
+
+		function smoothScroll() {
+			targetY = window.scrollY;
+			currentY = lerp(currentY, targetY, ease);
+
+			if (Math.abs(targetY - currentY) < 0.05) {
+				currentY = targetY;
+			}
+
+			smoothWrapper.style.transform = `translateY(${-currentY}px)`;
+
+			// Manually check reveal animations based on current scroll position
+			const viewportHeight = window.innerHeight;
+			document.querySelectorAll('.animate-in').forEach((item) => {
+				const rect = item.getBoundingClientRect();
+				const isBelowViewport = rect.top > viewportHeight * 0.75;
+				const isAboveViewport = rect.bottom < 0;
+
+				if (isBelowViewport || isAboveViewport) {
+					item.classList.remove('visible');
+				} else {
+					item.classList.add('visible');
+				}
+			});
+
+			requestAnimationFrame(smoothScroll);
+		}
+
+		// Initialize smooth scroll
+		setBodyHeight();
+		smoothScroll();
+
+		// Update body height on resize
+		window.addEventListener('resize', setBodyHeight);
+	} else {
+		// Standard scroll for mobile and reduced motion
+		const observerOptions = {
+			threshold: 0.1,
+			rootMargin: '0px 0px -50px 0px'
+		};
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
+					entry.target.classList.add('visible');
+					observer.unobserve(entry.target);
+				}
+			});
+		}, observerOptions);
+
+		// Observe all elements with .animate-in class
+		function setupAnimations() {
+			document.querySelectorAll('.animate-in').forEach(el => {
+				observer.observe(el);
+			});
+		}
+
+		// Run on DOM ready
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', setupAnimations);
+		} else {
+			setupAnimations();
+		}
+	}
+</script>
