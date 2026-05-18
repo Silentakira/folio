@@ -165,7 +165,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			</div>
 		</section>
 
-		<section class="services">
+		<section class="services" style="position: relative; overflow: visible;">
 			<div class="container">
 				<p class="section-label animate-in">Services</p>
 				<h2 class="section-title animate-in">What I can help with.</h2>
@@ -195,6 +195,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 					</div>
 				</div>
 			</div>
+			<img src="/chopper.png" alt="" style="position: absolute; bottom: 0; right: 60px; width: 120px; height: auto; z-index: 2;" />
 		</section>
 
 		<section class="contact" id="contact">
@@ -205,7 +206,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			</div>
 		</section>
 
-		<footer class="footer">
+		<footer class="footer" style="position: relative; overflow: visible;">
 			<div class="container">
 				<div class="footer-content">
 					<div class="social-links">
@@ -226,6 +227,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 					<p>© 2026 Akira Uriel · UI/UX & Branding · Braga, Portugal</p>
 				</div>
 			</div>
+			<img src="/george.png" alt="" style="position: absolute; bottom: 0; right: 0; width: 450px; height: 800px; object-fit: contain; object-position: bottom; z-index: 2;" />
 		</footer>
 	</main>
 	</div>
@@ -873,6 +875,18 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			margin-bottom: 48px;
 		}
 
+		/* Chopper decoration */
+		.chopper-decoration {
+			position: absolute;
+			bottom: -40px;
+			right: 60px;
+			width: 180px;
+			height: auto;
+			transform: rotate(5deg);
+			z-index: 2;
+			pointer-events: none;
+		}
+
 		.services-list {
 			display: flex;
 			flex-direction: column;
@@ -1152,6 +1166,10 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			.service-item p {
 				font-size: 0.95rem;
 				line-height: 1.6;
+			}
+
+			.chopper-decoration {
+				display: none;
 			}
 
 			/* Contact */
