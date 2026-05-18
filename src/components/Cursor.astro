@@ -16,28 +16,12 @@
 		pointer-events: none;
 		z-index: 10000;
 		opacity: 0;
-		transition: width 0.15s ease, height 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+		transition: opacity 0.15s ease;
 		will-change: transform;
 	}
 
 	.custom-cursor.active {
 		opacity: 1;
-	}
-
-	/* Hover states */
-	.custom-cursor.hover-dark {
-		background-color: #09090b;
-		border-color: #09090b;
-	}
-
-	.custom-cursor.hover-light {
-		background-color: #ffffff;
-		border-color: #ffffff;
-	}
-
-	.custom-cursor.hover-accent {
-		background-color: var(--accent-green);
-		border-color: var(--accent-green);
 	}
 
 	@media (max-width: 768px) {
@@ -60,7 +44,6 @@
 		let cursorX = 0;
 		let cursorY = 0;
 		let firstMove = true;
-		let lastUpdate = 0;
 
 		document.addEventListener('mousemove', (e: MouseEvent) => {
 			mouseX = e.clientX;
@@ -70,73 +53,7 @@
 				cursor.classList.add('active');
 				firstMove = false;
 			}
-
-			// Throttle cursor color updates to every 50ms
-			const now = Date.now();
-			if (now - lastUpdate > 50) {
-				updateCursorState(e.clientX, e.clientY);
-				lastUpdate = now;
-			}
 		});
-
-		function updateCursorState(x: number, y: number) {
-			const element = document.elementFromPoint(x, y);
-			if (!element) return;
-
-			// Check if hovering over interactive element
-			const isInteractive = element.matches('a, button, .cursor-interact, .text-accent') ||
-			               element.closest('a, button, .cursor-interact, .text-accent');
-
-			// Remove all hover states
-			cursor.classList.remove('hover-dark', 'hover-light', 'hover-accent');
-
-			if (isInteractive) {
-				const styles = window.getComputedStyle(element);
-				const bgColor = styles.backgroundColor;
-				const isLight = isLightBackground(bgColor);
-
-				if (element.matches('.text-accent') || element.closest('.text-accent')) {
-					cursor.classList.add('hover-accent');
-				} else if (isLight) {
-					cursor.classList.add('hover-light');
-				} else {
-					cursor.classList.add('hover-dark');
-				}
-			}
-		}
-
-		function isLightBackground(bgColor: string): boolean {
-			if (!bgColor || bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') {
-				return true;
-			}
-
-			const rgbMatch = bgColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-			if (rgbMatch) {
-				const [, r, g, b] = rgbMatch.map(Number);
-				const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-				return brightness > 128;
-			}
-
-			const rgbaMatch = bgColor.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)$/);
-			if (rgbaMatch) {
-				const [, r, g, b, a] = [parseInt(rgbaMatch[1]), parseInt(rgbaMatch[2]), parseInt(rgbaMatch[3]), parseFloat(rgbaMatch[4])];
-				if (a < 0.3) return true;
-				const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-				return brightness > 128;
-			}
-
-			const hexMatch = bgColor.match(/^#([0-9a-f]{3}){1,2}$/i);
-			if (hexMatch) {
-				const hex = hexMatch[1];
-				const r = parseInt(hex[0] + hex[0], 16);
-				const g = parseInt(hex[1] + hex[1], 16);
-				const b = parseInt(hex[2] + hex[2], 16);
-				const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-				return brightness > 128;
-			}
-
-			return true;
-		}
 
 		function animate() {
 			const dx = mouseX - cursorX;

@@ -11,20 +11,29 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 	<div id="smooth-wrapper">
 		<main>
 		<section class="hero">
+			<div class="circled-decoration">
+				<img src="/circled.png" alt="" class="circled" />
+			</div>
 			<div class="container">
-				<p class="overline animate-in">UI/UX & Brand Designer</p>
+				<p class="overline animate-in">
+					UI/UX & Brand Designer<img src="/smile.png" alt="" class="smile-icon" />
+				</p>
 
-				<h1 class="animate-in">
-					<span class="scramble-text">I design brands and interfaces that <span class="text-accent">work</span>.</span>
+				<h1 class="animate-in hero-headline-wrapper">
+					<span class="before-suck position-relative">I design brands and interfaces that don't </span>
+					<span class="suck-front position-relative">s</span><span class="suck-back position-relative">uck.</span>
+					<div class="scribble-decoration">
+						<img src="/circled.png" alt="" class="scribble" />
+					</div>
 				</h1>
 
 				<p class="description animate-in">
-					UI/UX & brand design. Logos, visual identity systems, websites that people actually understand how to use.
+					UI/UX & brand design. Logos, identity systems, websites that people actually enjoy using.
 				</p>
 
 				<div class="actions animate-in">
-					<a href="#work" class="btn-primary cursor-interact">See the work</a>
-					<a href="mailto:silencedakira@gmail.com" class="btn-secondary cursor-interact">Get in touch</a>
+					<a href="#work" class="text-link cursor-interact">See the work</a>
+					<a href="mailto:silencedakira@gmail.com" class="text-link cursor-interact">Get in touch</a>
 				</div>
 			</div>
 		</section>
@@ -32,14 +41,14 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		<section class="work" id="work">
 			<div class="container">
 				<p class="section-label animate-in">Selected Work</p>
-				<h2 class="section-title animate-in">Recent Projects</h2>
+				<h2 class="section-title animate-in">Featured Projects</h2>
 				<div class="projects">
 					<a href="/work/miau-studios" class="project animate-in cursor-interact">
 						<div class="project-header">
 							<span class="project-number">01</span>
 							<div class="project-meta">Miau Studios · Co-Founder & Designer</div>
 						</div>
-						<h3>Miau Studios</h3>
+						<h3>Miau Studios <img src="/star.svg" alt="" class="star-icon" /></h3>
 						<p>A school project that became real. Joana Soares and I created an indie game studio with skate-inspired aesthetics and a game to match.</p>
 						<div class="project-tags">
 							<span>Brand System</span>
@@ -81,25 +90,27 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		<section class="about">
 			<div class="container">
 				<p class="section-label animate-in">About</p>
-				<h2 class="section-title animate-in">About me</h2>
+				<h2 class="section-title animate-in">The stuff about me</h2>
 				<div class="about-content">
 					<p class="animate-in">
-						I'm <span class="text-accent">Akira Uriel</span> — UI/UX and brand designer based in Braga, Portugal.
+						Hey! I'm <span class="text-accent">Akira Uriel</span> — a UI/UX & brand designer creating projects that don't bore people to death.
 					</p>
 					<p class="animate-in">
-						I help businesses fix weak branding and confusing interfaces. logos, visual identity systems, UI/UX design that makes sense to users.
+						Based in Braga, Portugal, I help brands stop being forgettable and start being the one everyone remembers. Logos, systems, websites that work the way people think — not the way companies wish they thought.
 					</p>
 					<p class="animate-in">
-						Currently interning at Boutik Studio. Taking freelance projects for brand identity, UI/UX design, and design audits.
+						Currently working at Boutik Studio while taking on freelance projects. Brand identity, UI/UX, design audits — let's make something cool together.
 					</p>
 				</div>
 			</div>
+			<img src="/doggy.svg" alt="" class="doggy-decoration" />
+			<img src="/kitty.svg" alt="" class="kitty-decoration" />
 		</section>
 
 		<section class="process">
 			<div class="container">
 				<p class="section-label animate-in">Process</p>
-				<h2 class="animate-in">How I work</h2>
+				<h2 class="animate-in">How things get done</h2>
 				<div class="process-steps">
 					<div class="process-step animate-in">
 						<div class="step-left">
@@ -189,7 +200,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		<section class="contact" id="contact">
 			<div class="container">
 				<p class="section-label animate-in">Contact</p>
-				<h2 class="section-title animate-in">Your design should be easy to choose. Let's make sure it is.</h2>
+				<h2 class="section-title animate-in">Let's make something awesome together.</h2>
 				<a href="mailto:silencedakira@gmail.com" class="email-link cursor-interact animate-in">silencedakira@gmail.com</a>
 			</div>
 		</section>
@@ -364,7 +375,91 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			min-height: 90vh;
 			display: flex;
 			align-items: center;
-			padding: 120px 0;
+			padding: 120px 0 80px;
+			position: relative;
+		}
+
+		/* Hero headline wrapper for SVG layering */
+		.hero-headline-wrapper {
+			position: relative;
+			overflow: visible;
+			display: inline;
+		}
+
+		/* Position relative for z-index to work on inline elements */
+		.position-relative {
+			position: relative;
+		}
+
+		/* Z-index layering for the scribble effect */
+		.before-suck {
+			z-index: 3;
+		}
+
+		.suck-behind {
+			display: inline;
+			position: relative;
+			z-index: 1;
+		}
+
+		.suck-front {
+			display: inline;
+			position: relative;
+			z-index: 3;
+		}
+
+		.suck-back {
+			display: inline;
+			position: relative;
+			z-index: 1;
+		}
+
+		/* Scribble decoration */
+		.scribble-decoration {
+			position: absolute;
+			top: 85%;
+			left: 91%;
+			transform: translate(-50%, -50%);
+			width: 400px;
+			height: 280px;
+			pointer-events: none;
+			z-index: 2;
+		}
+
+		.scribble {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+
+		/* Smiley icon inline */
+		.smile-icon {
+			display: inline-block;
+			vertical-align: middle;
+			height: 28px;
+			width: auto;
+			margin-left: 6px;
+		}
+
+		/* Star icon inline */
+		.star-icon {
+			display: inline-block;
+			vertical-align: middle;
+			height: 32px;
+			width: auto;
+			margin-left: 12px;
+		}
+
+		/* Remove circled decoration */
+		.circled-decoration {
+			position: absolute;
+			top: 40px;
+			right: 0;
+			width: 250px;
+			height: 250px;
+			z-index: 10;
+			pointer-events: none;
+			display: none;
 		}
 
 		.overline {
@@ -489,9 +584,38 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			transition-delay: 0.05s;
 		}
 
-		.btn-secondary:hover {
-			color: #ffffff;
-			transition-delay: 0.05s;
+		.text-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 8px 0;
+			font-size: 0.95rem;
+			font-weight: 500;
+			color: #09090b;
+			text-decoration: none;
+			position: relative;
+			transition: color 0.3s ease;
+		}
+
+		.text-link::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background-color: #09090b;
+			transform: scaleX(1);
+			transform-origin: left;
+			transition: transform 0.3s ease;
+		}
+
+		.text-link:hover {
+			color: #64748b;
+		}
+
+		.text-link:hover::after {
+			transform: scaleX(0);
 		}
 
 		/* Sections */
@@ -611,6 +735,11 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		}
 
 		/* About */
+		.about {
+			position: relative;
+			overflow: visible;
+		}
+
 		.about-content {
 			display: flex;
 			flex-direction: column;
@@ -622,6 +751,29 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			font-size: 1.05rem;
 			line-height: 1.8;
 			max-width: 720px;
+		}
+
+		/* Doggy and Kitty decorations */
+		.doggy-decoration {
+			position: absolute;
+			top: 80px;
+			right: 100px;
+			width: 170px;
+			height: auto;
+			transform: rotate(-5deg);
+			pointer-events: none;
+			z-index: 1;
+		}
+
+		.kitty-decoration {
+			position: absolute;
+			top: 380px;
+			right: 90px;
+			width: 170px;
+			height: auto;
+			transform: rotate(8deg);
+			pointer-events: none;
+			z-index: 1;
 		}
 
 		/* Process */
@@ -710,6 +862,11 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		}
 
 		/* Services */
+		.services {
+			position: relative;
+			overflow: visible;
+		}
+
 			font-size: 2rem;
 			font-weight: 700;
 			letter-spacing: -0.02em;
@@ -844,6 +1001,15 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 				min-height: auto;
 			}
 
+			.scribble-decoration {
+				width: 200px;
+				height: 150px;
+			}
+
+			.smile-icon {
+				height: 24px;
+			}
+
 			.hero h1 {
 				font-size: clamp(1.75rem, 6vw, 2.5rem);
 				line-height: 1.2;
@@ -909,6 +1075,11 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 			/* About */
 			.about-content p {
 				font-size: 1rem;
+			}
+
+			.doggy-decoration,
+			.kitty-decoration {
+				display: none;
 			}
 
 			/* Process */
