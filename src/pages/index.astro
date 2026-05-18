@@ -2,6 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Cursor from '../components/Cursor.astro';
 import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
+import doggy from '../assets/doggy.svg';
+import kitty from '../assets/kitty.svg';
+import chopper from '../assets/chopper.png';
+import george from '../assets/george.png';
+import circled from '../assets/circled.svg';
+import smile from '../assets/smile.svg';
+import star from '../assets/star.svg';
 ---
 
 <Layout title="Home">
@@ -12,18 +19,18 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 		<main>
 		<section class="hero">
 			<div class="circled-decoration">
-				<img src="/circled.png" alt="" class="circled" />
+				<img src={circled.src} alt="" class="circled" />
 			</div>
 			<div class="container">
 				<p class="overline animate-in">
-					UI/UX & Brand Designer<img src="/smile.png" alt="" class="smile-icon" />
+					UI/UX & Brand Designer<img src={smile.src} alt="" class="smile-icon" />
 				</p>
 
 				<h1 class="animate-in hero-headline-wrapper">
 					<span class="before-suck position-relative">I design brands and interfaces that don't </span>
 					<span class="suck-front position-relative">s</span><span class="suck-back position-relative">uck.</span>
 					<div class="scribble-decoration">
-						<img src="/circled.png" alt="" class="scribble" />
+						<img src={circled.src} alt="" class="scribble" />
 					</div>
 				</h1>
 
@@ -48,7 +55,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 							<span class="project-number">01</span>
 							<div class="project-meta">Miau Studios · Co-Founder & Designer</div>
 						</div>
-						<h3>Miau Studios <img src="/star.svg" alt="" class="star-icon" /></h3>
+						<h3>Miau Studios <img src={star.src} alt="" class="star-icon" /></h3>
 						<p>A school project that became real. Joana Soares and I created an indie game studio with skate-inspired aesthetics and a game to match.</p>
 						<div class="project-tags">
 							<span>Brand System</span>
@@ -103,8 +110,8 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 					</p>
 				</div>
 			</div>
-			<img src="/doggy.svg" alt="" class="doggy-decoration" />
-			<img src="/kitty.svg" alt="" class="kitty-decoration" />
+			<img src={doggy.src} alt="" class="doggy-decoration" />
+			<img src={kitty.src} alt="" class="kitty-decoration" />
 		</section>
 
 		<section class="process">
@@ -195,7 +202,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 					</div>
 				</div>
 			</div>
-			<img src="/chopper.png" alt="" style="position: absolute; bottom: 0; right: 60px; width: 120px; height: auto; z-index: 2;" />
+			<img src={chopper.src} alt="" style="position: absolute; bottom: 0; right: 60px; width: 120px; height: auto; z-index: 2;" />
 		</section>
 
 		<section class="contact" id="contact">
@@ -227,7 +234,7 @@ import AsciiTextAnimation from '../components/AsciiTextAnimation.astro';
 					<p>© 2026 Akira Uriel · UI/UX & Branding · Braga, Portugal</p>
 				</div>
 			</div>
-			<img src="/george.png" alt="" style="position: absolute; bottom: 0; right: 0; width: 450px; height: 800px; object-fit: contain; object-position: bottom; z-index: 2;" />
+			<img src={george.src} alt="" style="position: absolute; bottom: 0; right: 0; width: 450px; height: 800px; object-fit: contain; object-position: bottom; z-index: 2;" />
 		</footer>
 	</main>
 	</div>
